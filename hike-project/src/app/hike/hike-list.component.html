@@ -1,1 +1,10 @@
 <h2>Liste des randonnées</h2>
+
+<!--2 ways binding [()]-->
+<div>
+    Filter par: <input type="text" [(ngModel)]="searchTerm" placeholder="Filter par terme"/>
+</div>
+<!--structural directive *ng-->
+<div *ngFor="let hike of hikes | hikeFilter:searchTerm"> <!--custom pipe: hikeFilter on doit lui passer un paramètre ici 'searchTerm' on aurai pu choisir un autre nom-->
+    <hike-summary [hk]="hike" (addhikesasfavorite)="addToMyTodoHike($event)"></hike-summary>
+</div>
